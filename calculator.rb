@@ -1,6 +1,8 @@
-require 'pry'
+#require 'pry'
 
 class Calculator
+    DELIMETERS = /;|,|\n/
+
     def self.add(input)
       return 0 if input.empty?
       
@@ -9,10 +11,9 @@ class Calculator
                       delimiter_line, input = input.split("\n", 2)
                       /#{Regexp.escape(delimiter_line[2])}|,|\n/
                     else
-                      /;|,|\n/
+                      DELIMETERS
                     end
 
-      numbers = input.split(delimiters).map(&:to_i)
-      numbers.sum
+      input.split(delimiters).map(&:to_i).sum
     end
 end  
