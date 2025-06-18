@@ -13,5 +13,9 @@ RSpec.describe Calculator do
     it "returns sum of two numbers" do
       expect(described_class.add("1,2")).to eq(3)
     end
+
+    it "returns sum of multiple numbers" do
+      expect(described_class.add("1,2,3,4")).to eq(10)
+    end
   end
 end
