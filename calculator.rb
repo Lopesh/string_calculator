@@ -13,7 +13,10 @@ class Calculator
                     else
                       DELIMETERS
                     end
+      numbers = input.split(delimiters).map(&:to_i)
+      negatives = numbers.select { |n| n < 0 }
+      raise "negative numbers not allowed #{negatives.join(',')}" if negatives.any?
 
-      input.split(delimiters).map(&:to_i).sum
+      numbers.sum
     end
 end  

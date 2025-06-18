@@ -1,6 +1,7 @@
 require_relative '../calculator'
 
 RSpec.describe Calculator do
+  ## described_class is basically which we're mentioning in Rspec.describe like in our case is Calculator.
   describe ".add" do
     it "returns 0 for an empty string" do
       expect(described_class.add("")).to eq(0)
@@ -24,6 +25,12 @@ RSpec.describe Calculator do
 
     it "supports custom delimiter like //;\n1;2" do
       expect(described_class.add("//;\n1;2")).to eq(3)
+    end
+
+    it "raises error for negative numbers" do
+      expect {
+        described_class.add("1,-2,-5")
+      }.to raise_error("negative numbers not allowed -2,-5")
     end
   end
 end
